@@ -1,8 +1,15 @@
 function doPost(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName('data');
+  var lastRow = sheet.getLastRow();
   
   if (typeof e !== 'undefined') {
+
+  	// save copy of raw data
+    var stringData = JSON.stringify(e.postData.contents);
+    sheet.getRange(lastRow + 1, 1).setValue(stringData);
+
+    // parse data
     var contents = JSON.parse(e.postData.contents);
     
     // event level
@@ -53,7 +60,6 @@ function doPost(e) {
 		Logger.log(newRow);
 
     // paste data into Sheet
-    var lastRow = sheet.getLastRow();
     sheet.getRange(lastRow + 1,1,1,14).setValues([newRow]);
     
   }
