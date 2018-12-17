@@ -5,6 +5,8 @@ function doPost(e) {
   if (typeof e !== 'undefined') {
     var contents = JSON.parse(e.postData.contents);
 
+    Logger.log(contents);
+
     // event level
     var event_id = contents.id;
     var event_created_at = contents.created;
@@ -101,6 +103,7 @@ function doPost(e) {
 
     	);
 
+		Logger.log(newRow);
 
     // paste data into Sheet
     var lastRow = sheet.getLastRow();
