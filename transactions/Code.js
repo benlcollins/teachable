@@ -5,7 +5,7 @@ function doPost(e) {
   
   if (typeof e !== 'undefined') {
 
-  	// save copy of raw data
+  	// save copy of raw data as string
     var stringData = JSON.stringify(e.postData.contents);
     sheet.getRange(lastRow + 1, 1).setValue(stringData);
 
@@ -41,7 +41,7 @@ function doPost(e) {
     newRow.push(
     	event_id,
     	event_created_at,
-        
+
     	event_object_user_id,
 
     	transactions_object_sale_id,
