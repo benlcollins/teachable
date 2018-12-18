@@ -21,7 +21,7 @@ function doPost(e) {
     var event_object_user_id = event_object.user_id;
     
     // transactions level
-    var transactions_object = event_object.transactions[0];
+    var transactions_object = event_object.data.transactions[0];
     var transactions_object_sale_id = (transactions_object == null) ? "" : transactions_object.sale_id;
     var transactions_object_final_price = (transactions_object == null) ? "" : transactions_object.final_price;
     var transactions_object_affiliate_percent = (transactions_object == null) ? "" : transactions_object.affiliate_percent;
@@ -41,6 +41,7 @@ function doPost(e) {
     newRow.push(
     	event_id,
     	event_created_at,
+        
     	event_object_user_id,
 
     	transactions_object_sale_id,
