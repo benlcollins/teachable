@@ -21,9 +21,10 @@ function doPost(e) {
     var event_object_user_id = event_object.user_id;
     
     // transactions level
-    var transactions_object = event_object.data.transactions[0];
+    var transactions_object = event_object.sale.transactions[0];
     var transactions_object_sale_id = (transactions_object == null) ? "" : transactions_object.sale_id;
     var transactions_object_final_price = (transactions_object == null) ? "" : transactions_object.final_price;
+    var transactions_object_net_tax_charge = (transactions_object == null) ? "" : transactions_object.net_tax_charge;
     var transactions_object_affiliate_percent = (transactions_object == null) ? "" : transactions_object.affiliate_percent;
     var transactions_object_affiliate_fees = (transactions_object == null) ? "" : transactions_object.affiliate_fees;
     var transactions_object_teachable_percent = (transactions_object == null) ? "" : transactions_object.teachable_percent;
@@ -46,6 +47,7 @@ function doPost(e) {
 
     	transactions_object_sale_id,
     	transactions_object_final_price,
+        transactions_object_net_tax_charge,
     	transactions_object_affiliate_percent,
     	transactions_object_affiliate_fees,
     	transactions_object_teachable_percent,
@@ -61,7 +63,7 @@ function doPost(e) {
 		Logger.log(newRow);
 
     // paste data into Sheet
-    sheet.getRange(lastRow + 1,1,1,14).setValues([newRow]);
+    sheet.getRange(lastRow + 1,1,1,15).setValues([newRow]);
     
   }
   return;
