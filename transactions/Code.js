@@ -23,16 +23,16 @@ function doPost(e) {
     // transactions level
     var transactions_object = event_object.sale.transactions[0];
     var transactions_object_sale_id = (transactions_object == null) ? "" : transactions_object.sale_id;
-    var transactions_object_final_price = (transactions_object == null) ? "" : transactions_object.final_price;
-    var transactions_object_net_tax_charge = (transactions_object == null) ? "" : transactions_object.net_tax_charge;
+    var transactions_object_final_price = (transactions_object == null) ? "" : (transactions_object.final_price / 100);
+    var transactions_object_net_tax_charge = (transactions_object == null) ? "" : (transactions_object.net_tax_charge / 100);
     var transactions_object_affiliate_percent = (transactions_object == null) ? "" : transactions_object.affiliate_percent;
-    var transactions_object_affiliate_fees = (transactions_object == null) ? "" : transactions_object.affiliate_fees;
+    var transactions_object_affiliate_fees = (transactions_object == null) ? "" : (transactions_object.affiliate_fees / 100);
     var transactions_object_teachable_percent = (transactions_object == null) ? "" : transactions_object.teachable_percent;
-    var transactions_object_teachable_processor_fee = (transactions_object == null) ? "" : transactions_object.teachable_processor_fee;
-    var transactions_object_teachable_fixed_fee = (transactions_object == null) ? "" : transactions_object.teachable_fixed_fee;
-    var transactions_object_total_teachable_fee = (transactions_object == null) ? "" : transactions_object.total_teachable_fee;
-    var transactions_object_net_charge = (transactions_object == null) ? "" : transactions_object.net_charge;
-    var transactions_object_earnings_usd = (transactions_object == null) ? "" : transactions_object.earnings_usd;
+    var transactions_object_teachable_processor_fee = (transactions_object == null) ? "" : (transactions_object.teachable_processor_fee / 100);
+    var transactions_object_teachable_fixed_fee = (transactions_object == null) ? "" : (transactions_object.teachable_fixed_fee / 100);
+    var transactions_object_total_teachable_fee = (transactions_object == null) ? "" : (transactions_object.total_teachable_fee / 100);
+    var transactions_object_net_charge = (transactions_object == null) ? "" : (transactions_object.net_charge / 100);
+    var transactions_object_earnings_usd = (transactions_object == null) ? "" : (transactions_object.earnings_usd / 100);
     var transactions_object_payment_method = (transactions_object == null) ? "" : transactions_object.payment_method;
 
 
@@ -63,7 +63,7 @@ function doPost(e) {
 		Logger.log(newRow);
 
     // paste data into Sheet
-    sheet.getRange(lastRow + 1,1,1,15).setValues([newRow]);
+    sheet.getRange(lastRow + 1,2,1,15).setValues([newRow]);
     
   }
   return;
