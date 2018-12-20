@@ -33,7 +33,7 @@ function doPost(e) {
     var transactions_object_total_teachable_fee = (transactions_object == null) ? "" : (transactions_object.total_teachable_fee / 100);
     var transactions_object_net_charge = (transactions_object == null) ? "" : (transactions_object.net_charge / 100);
     var transactions_object_earnings_usd = (transactions_object == null) ? "" : (transactions_object.earnings_usd / 100);
-    var transactions_object_payment_method = (transactions_object == null) ? "" : transactions_object.payment_method;
+    var transactions_object_payment_method = (transactions_object == null) ? "" : transactions_object.fee_details.payment_method;
 
 
     // put into array for Sheet
